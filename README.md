@@ -15,22 +15,31 @@ Players choose a class, descend into the abyss, fight procedurally generated mon
 
 ---
 
-## 🏗️ Technical Highlights (OOP Principles)
+‧₊˚ ┊ Object-oriented Principles
 
-This project was built to demonstrate mastery of Java Object-Oriented Programming:
+💊 Encapsulation
 
-### 1. 💊 Encapsulation
-Data is protected within classes. For example, the `Player` class manages its own health via the `takeDamage()` method. This ensures that HP never drops below zero unexpectedly and keeps the combat logic safe.
+Encapsulation is the bundling of data and methods that operate on that data within a single unit (class), while restricting access to some of the object's components.
+* **Implementation:** In `Player.java`, we moved away from modifying health directly (e.g., `hp -= 10`). Instead, we implemented a controlled method `takeDamage(int amount)`.
+* **Benefit:** This acts as a protective shield for the data. The method contains logic to ensure health never drops below zero, preventing "negative HP" bugs. It safeguards the character's state from external interference and keeps the combat logic centralized.
 
-### 2. 💡 Abstraction
-We utilize an `abstract class Enemy` to define the blueprint for all monsters. The main game loop doesn't need to know *how* an enemy attacks; it simply calls the abstract `attackPlayer()` method, hiding the complex logic.
+💡 Abstraction
 
-### 3. 🧬 Inheritance
-To maximize code reusability, specific enemies like `Goblin` and `Wraith` inherit from the parent `Enemy` class. They automatically acquire health and name properties, allowing us to add new monsters easily without rewriting code.
+Abstraction involves hiding complex implementation details and showing only the essential features of the object.
+* **Implementation:** We created an `abstract class Enemy` in `Enemy.java`. This class acts as a blueprint or contract. It defines that *every* monster must have health, a name, and an ability to attack, but it leaves the implementation of the `attackPlayer()` method abstract (empty).
+* **Benefit:** The main game loop (`Dungeon.java`) can interact with the concept of an "Enemy" without needing to know the specific math behind a Goblin's stab or a Wraith's scream. It simplifies the game engine significantly.
 
-### 4. 🎭 Polymorphism
-The battle system uses polymorphism to handle dynamic behaviors. The code calls `enemy.attackPlayer()`, and the program automatically determines at runtime whether to execute the **Goblin's** physical attack or the **Wraith's** magic piercing attack.
+🧬 Inheritance
 
+Inheritance allows a new class to acquire the properties and behaviors of an existing class, promoting code reuse.
+* **Implementation:** Specific monster classes like `Goblin` and `Wraith` extend the parent `Enemy` class.
+* **Benefit:** We write the code for `hp`, `name`, `isAlive()`, and `takeDamage()` only once in the parent class. The child classes automatically inherit these features. This reduces code duplication and makes it incredibly easy to add new monsters—we simply create a class that extends `Enemy` and focuses solely on its unique stats.
+
+🎭 Polymorphism
+
+Polymorphism allows objects to be treated as instances of their parent class rather than their actual class.
+* **Implementation:** In the `Dungeon.java` battle loop, the code executes `e.attackPlayer()`. The variable `e` is declared generally as an `Enemy`, but at runtime, it might hold a `Goblin` object or a `Wraith` object.
+* **Benefit:** This single line of code behaves differently depending on what the object actually is. If it's a Goblin, it runs the standard attack logic. If it's a Wraith, it runs the armor-piercing logic. This allows the battle system to remain flexible and handle any number of new enemy types without changing the core loop.
 ---
 
 ## 📂 Project Structure
