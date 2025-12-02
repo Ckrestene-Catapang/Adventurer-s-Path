@@ -2,10 +2,10 @@
 
 Your console-based infinite dungeon crawler RPG.
 
-CS 2106
-[Member 1 Name]
-[Member 2 Name]
-[Member 3 Name]
+CS 2114
+Ckrestene F. Catapang
+Joshua Dimaculangan
+French Hernandez
 
 ‧₊˚ ┊ Overview
 
@@ -124,13 +124,10 @@ if(p.isAlive()){
 ‧₊˚ ┊ Contributors
 
 Name                      Role
-[Member 1 Name]           Lead Developer / Encapsulation
-[Member 2 Name]           System Architect / Inheritance
-[Member 3 Name]           Logic Specialist / Polymorphism
+Ckrestene F. Catapang        Lead Developer / Encapsulation
+Joshua Dimaculangan          System Architect / Inheritance
+French Hernandez             Logic Specialist / Polymorphism
 
 ‧₊˚ ┊ Acknowledgment
 
 We sincerely express our gratitude to our instructor for the guidance and support provided throughout the completion of this project. We also extend our appreciation to our classmates and peers for their cooperation and encouragement.
-
-DISCLAIMER
-This project and its contents are provided for example and learning purposes only. Students are encouraged to use it as a reference and not copy it in its entirety.
