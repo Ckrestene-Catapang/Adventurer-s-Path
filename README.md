@@ -1,19 +1,62 @@
-# ⚔️ Adventurer's Path
+𐔌 .⋮ Adventurer's Path .ᐟ ֹ ₊ ꒱
 
-**Adventurer's Path** is a console-based, infinite dungeon crawler RPG built in Java. It demonstrates robust software architecture using the four pillars of Object-Oriented Programming (OOP) to create a scalable and interactive game world.
+Your console-based infinite dungeon crawler RPG.
 
-Players choose a class, descend into the abyss, fight procedurally generated monsters, and manage resources to survive as long as possible.
+CS 2106
+[Member 1 Name]
+[Member 2 Name]
+[Member 3 Name]
 
-## 🌟 Features
+‧₊˚ ┊ Overview
 
-* **Class System**: Choose your path—**Knight** (Tank), **Archer** (Balanced), or **Mage** (High Damage/Mana).
-* **Tactical Combat**: Turn-based battles where you must decide to Attack, Defend, or use unique Skills (like *Fireball* or *Shield Bash*).
-* **Smart Enemy AI**: Enemies use **Polymorphism** to behave differently—Goblins stab, while Wraiths ignore armor with piercing screams.
-* **Progression System**: Earn EXP to level up your HP and Attack.
-* **Equipment System**: Find Weapons and Armor. "Using" them permanently upgrades your stats, simulating character growth.
-* **Robust Input**: The game handles invalid inputs gracefully and keeps the interface clean with console flushing.
+Adventurer's Path is a console-based Java application that simulates a turn-based Role-Playing Game (RPG). Players descend into an infinite abyss, fighting procedurally generated monsters and managing resources to survive.
 
----
+It demonstrates the practical use of Object-oriented Programming (OOP) concepts such as encapsulation, inheritance, polymorphism, and abstraction, alongside robust input handling and modular design.
+Players can:
+
+⚔️ Choose a Class (Knight, Archer, Mage)
+💀 Fight Random Enemies (Goblins, Wraiths, etc.)
+🛡️ Loot & Equip Items to upgrade stats
+🧪 Use Potions to recover health
+🏃 Flee or Rest to survive longer runs
+
+‧₊˚ ┊ Project Structure
+
+📂 src/
+├── 📂 character/
+│   ├── ☕ Player.java
+│   ├── ☕ Enemy.java
+│   ├── ☕ Goblin.java
+│   └── ☕ Wraith.java
+├── 📂 game/
+│   ├── ☕ Game.java          
+│   ├── ☕ Dungeon.java
+│   ├── ☕ Story.java
+│   └── ☕ Item.java
+└── 📂 utils/
+    └── ☕ Utils.java
+
+Game.java - Entry point of the program; handles the main game loop and menu.
+Dungeon.java - Handles combat mechanics and turn-based logic.
+Player.java - Manages user stats, inventory, and skills.
+Enemy.java - Abstract parent class for all monsters.
+Utils.java - Handles input validation and console flushing.
+
+How to Run the Program
+
+Open your terminal in the src/ folder and run:
+javac game/Game.java
+
+Run the program using:
+java game.Game
+
+‧₊˚ ┊ Features
+
+Class Selection. Choose from 3 distinct classes with unique skills and starting stats.
+Dynamic Combat. Turn-based battles where you can Attack, Defend, or use Skills.
+Scaling Difficulty. Enemies get stronger (higher HP/Atk) as you descend floors.
+Inventory System. Find loot; "using" weapons/armor permanently upgrades your stats.
+Robust Input. Prevents crashes by validating user input and flushing the screen.
 
 ‧₊˚ ┊ Object-oriented Principles
 
@@ -40,23 +83,54 @@ Inheritance allows a new class to acquire the properties and behaviors of an exi
 Polymorphism allows objects to be treated as instances of their parent class rather than their actual class.
 * **Implementation:** In the `Dungeon.java` battle loop, the code executes `e.attackPlayer()`. The variable `e` is declared generally as an `Enemy`, but at runtime, it might hold a `Goblin` object or a `Wraith` object.
 * **Benefit:** This single line of code behaves differently depending on what the object actually is. If it's a Goblin, it runs the standard attack logic. If it's a Wraith, it runs the armor-piercing logic. This allows the battle system to remain flexible and handle any number of new enemy types without changing the core loop.
----
+‧₊˚ ┊ Example Output
 
-## 📂 Project Structure
+--- Floor 5 ---
+A wild Wraith emerges from the shadows!
 
-```text
-src/
-├── 📂 character/       # Entities and Logic
-│   ├── ☕ Player.java  # Handles stats, inventory, and skills
-│   ├── ☕ Enemy.java   # Abstract Parent Class
-│   ├── ☕ Goblin.java  # Child Class (Basic Enemy)
-│   └── ☕ Wraith.java  # Child Class (Special Enemy)
-│
-├── 📂 game/            # Core Game Engine
-│   ├── ☕ Game.java    # Main Entry Point & Game Loop
-│   ├── ☕ Dungeon.java # Combat Logic & Battle Loop
-│   ├── ☕ Story.java   # Narrative Text & Events
-│   └── ☕ Item.java    # Loot Generation
-│
-└── 📂 utils/           # Helper Tools
-    └── ☕ Utils.java   # Input Validation & Screen Clearing
+Warrior HP:25/30 | Mana:18/20
+Wraith HP:30
+
+1) Attack
+2) Defend
+3) Skill
+4) Flee
+> 3
+You used Shield Bash! Dealt 12 damage.
+Wraith screeches, piercing your soul!
+It hits you for 6 shadow damage!
+
+‧₊˚ ┊ Dungeon.java Snippet
+
+// Polymorphism in action
+// 'e' could be a Goblin or a Wraith
+if(e.isAlive()){
+    e.attackPlayer(p, defending); 
+    System.out.println(""); 
+}
+
+if(p.isAlive()){ 
+    System.out.println("You defeated "+e.getName()+"!");
+    p.gainExp(e.getExpReward());
+    
+    // Loot generation
+    Item drop = Item.randomDrop(p.floor);
+    if(drop != null){ 
+        System.out.println("You found: "+drop.name); 
+        p.addItem(drop); 
+    }
+}
+
+‧₊˚ ┊ Contributors
+
+Name                      Role
+[Member 1 Name]           Lead Developer / Encapsulation
+[Member 2 Name]           System Architect / Inheritance
+[Member 3 Name]           Logic Specialist / Polymorphism
+
+‧₊˚ ┊ Acknowledgment
+
+We sincerely express our gratitude to our instructor for the guidance and support provided throughout the completion of this project. We also extend our appreciation to our classmates and peers for their cooperation and encouragement.
+
+DISCLAIMER
+This project and its contents are provided for example and learning purposes only. Students are encouraged to use it as a reference and not copy it in its entirety.
